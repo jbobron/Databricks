@@ -4,19 +4,18 @@ var Item = React.createClass({
 
   render: function(){
     var checkMe = this.props.tree.children ? true: false;
-    if(checkMe){ //children with no children dont get index
+    //recursively creates Item tags for each node in tree
+    if(checkMe){
       var self = this;
       var listItems = this.props.tree.children.map(function(child, i){
-        //debugger;
-        console.log("check me", self.props.collapse)
-        var boundClick = self.props.collapse.bind(self,i);
+        var boundClick = self.props.collapse.bind(self, child.name);
         return <Item i={i} collapse={boundClick} isCollapsed={child.isCollapsed} tree={child} name={child.name}/>
       })
     }
     return(
       <div>
       
-        <li onClick={this.props.collapse}>{this.props.tree.name}</li>
+        <li onClick={this.props.collapse.bind(this,this.props.tree.name)}>{this.props.tree.name}</li>
         <ul>
           {listItems}
         </ul>

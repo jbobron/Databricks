@@ -7,9 +7,13 @@ var Folder = React.createClass({
       tree: getTree()
     }
   },
-  collapse: function(index){
-    console.log("clicked", index)
+  collapse: function(name){
     //modify nodes isCollapsed
+    var modifiedTree = searchTreeAndModifyIsCollpased(this.state.tree,name)
+    //set state to new tree
+    this.setState({
+      tree: modifiedTree
+    })
     
   },
   render: function(){
@@ -23,6 +27,8 @@ var Folder = React.createClass({
     )
   }
 });
+
+
 
 function getTree(){
   var Tree = function(name){
@@ -53,6 +59,23 @@ function getTree(){
 
 }
 
+
+function searchTreeAndModifyIsCollpased(tree, target){
+  function subroutine(node){
+    if(node.name === target){
+      node.isCollapsed = !node.isCollapsed;
+      return;
+    } else{
+      node.children.map(function(child){
+        subroutine(child);
+      })
+    }
+    console.log("target not found");
+  }
+  subroutine(tree);
+  return tree;
+  //returns modified tree
+}
 
 
 module.exports = Folder;
