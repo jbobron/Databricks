@@ -44,6 +44,7 @@ function getTree(){
   //TODO: generate random tree here
   //below is temporary tree
   var myTree = new Tree('Documents');
+  myTree.isCollapsed = false;
   myTree.addChild("Projects");
   myTree.addChild("Homework");
   myTree.addChild("Todos");
@@ -61,8 +62,10 @@ function getTree(){
 
 
 function searchTreeAndModifyIsCollpased(tree, target){
+  var found = false;
   function subroutine(node){
     if(node.name === target){
+      found = true;
       node.isCollapsed = !node.isCollapsed;
       return;
     } else{
@@ -70,7 +73,10 @@ function searchTreeAndModifyIsCollpased(tree, target){
         subroutine(child);
       })
     }
-    console.log("target not found");
+    if(!found) {
+      console.log(node.name, target)
+      console.log("target not found");
+    }
   }
   subroutine(tree);
   return tree;

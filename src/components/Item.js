@@ -1,8 +1,11 @@
 var React = require('react');
 
+var collapseStyle = {};
+
 var Item = React.createClass({
 
   render: function(){
+    var classString = "";
     var checkMe = this.props.tree.children ? true: false;
     //recursively creates Item tags for each node in tree
     if(checkMe){
@@ -12,11 +15,12 @@ var Item = React.createClass({
         return <Item i={i} collapse={boundClick} isCollapsed={child.isCollapsed} tree={child} name={child.name}/>
       })
     }
+    collapseStyle = this.props.tree.isCollapsed ? {display: 'none'} : {};
+    
     return(
       <div>
-      
         <li onClick={this.props.collapse.bind(this,this.props.tree.name)}>{this.props.tree.name}</li>
-        <ul>
+        <ul style={collapseStyle}>
           {listItems}
         </ul>
       </div>
