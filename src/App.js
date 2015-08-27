@@ -1,4 +1,4 @@
 var React = require('react');
-var Parent = require('./components/Parent');
+var Folder = require('./components/Folder');
 
-React.render(<Parent />, document.getElementById('app'));
+React.render(<Folder />, document.getElementById('app'));

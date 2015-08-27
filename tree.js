@@ -13,6 +13,17 @@ Tree.prototype.addChild = function(name){
 
 
 var myTree = new Tree('Documents');
+// var myTree = new Tree('Documents');
+  myTree.addChild("Projects");
+  myTree.addChild("Homework");
+  myTree.addChild("Todos");
+  myTree.children[0].addChild('project1')
+  myTree.children[0].addChild('project2')
+  myTree.children[1].addChild('hw1')
+  myTree.children[1].addChild('hw2')
+  myTree.children[1].addChild('hw3')
+  myTree.children[2].addChild('buy milk')
+  myTree.children[2].addChild('finish coding challenge')
 
 console.log(myTree)
 
