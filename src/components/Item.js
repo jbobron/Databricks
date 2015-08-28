@@ -11,9 +11,12 @@ var Item = React.createClass({
       var listItems = this.props.tree.children.map(function(node){
         //bind collapse func b/c 'this' inside map is the window, we need
         //collapse bound to the react component
+        // if(node.name === 'project1') debugger;
+        debugger;
         var boundClick = self.props.collapse.bind(self, node.name);
         return <Item 
-                collapse={boundClick} 
+                myCollapse={boundClick} 
+                collapse={self.props.collapse}
                 isCollapsed={node.isCollapsed} 
                 tree={node} 
                 name={node.name}/>

@@ -11,6 +11,7 @@ var Folder = React.createClass({
   //collapse is passed down to each item in list, must be located here 
   //to access tree state
   collapse: function(name){
+    console.log("name", name, "collapse flag toggled")
     //modify target node's isCollapsed property
     var modifiedTree = searchTreeAndModifyIsCollpased(this.state.tree,name)
     //set state to new tree

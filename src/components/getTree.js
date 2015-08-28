@@ -23,6 +23,9 @@ module.exports = {
     myTree.children[1].addChild('Angular');
     myTree.children[2].addChild('Ion Stoica');
     myTree.children[2].addChild('Matei Zaharia');
+    myTree.children[0].children[0].addChild('part1')
+    myTree.children[0].children[1].addChild('part2')
+    myTree.children[0].children[0].children[0].addChild('v1')
     return myTree;
   }
 
