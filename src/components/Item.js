@@ -1,26 +1,25 @@
 var React = require('react');
 
-var collapseStyle = {};
-
 var Item = React.createClass({
-
   render: function(){
-    var classString = "";
-    var checkMe = this.props.tree.children ? true: false;
-    //recursively creates Item tags for each node in tree
-    if(checkMe){
+    if(this.props.tree.children){
+      //need to make a reference to "this" context bc of new function scope in map
       var self = this;
-      var listItems = this.props.tree.children.map(function(child, i){
-        var boundClick = self.props.collapse.bind(self, child.name);
-        return <Item i={i} collapse={boundClick} isCollapsed={child.isCollapsed} tree={child} name={child.name}/>
+      var listItems = this.props.tree.children.map(function(node){
+        //bind collapse func b/c 'this' inside map is the window, we need
+        //collapse bound to the react component
+        var boundClick = self.props.collapse.bind(self, node.name);
+        return <Item 
+                collapse={boundClick} 
+                isCollapsed={node.isCollapsed} 
+                tree={node} 
+                name={node.name}/>
       })
-    }
-    collapseStyle = this.props.tree.isCollapsed ? {display: 'none'} : {};
-    
+    }    
     return(
       <div>
         <li onClick={this.props.collapse.bind(this,this.props.tree.name)}>{this.props.tree.name}</li>
-        <ul style={collapseStyle}>
+        <ul style={this.props.tree.isCollapsed ? {display: 'none'} : {}}>
           {listItems}
         </ul>
       </div>
@@ -29,19 +28,3 @@ var Item = React.createClass({
 });
 
 module.exports = Item;
-
-/*
-
-
-
-
-if(this.props.replies){
-      replies = this.props.replies.map(function (reply) {
-        return (
-          <Comment author={reply.author} body={reply.body} image={reply.image} replies={reply.replies} ></Comment>
-        );
-      });
-    }
-    
-
-*/
