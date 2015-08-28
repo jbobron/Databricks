@@ -1,5 +1,8 @@
 var React = require('react');
 
+
+//create path param/attribute that is appended to each time we recursivly render Item
+//so we can pass "path" as the param to collapse function
 var Item = React.createClass({
   render: function(){
     if(this.props.tree.children){
