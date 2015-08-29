@@ -13,7 +13,7 @@ var Folder = React.createClass({
   collapse: function(name){
     console.log("name", name, "collapse flag toggled")
     //modify target node's isCollapsed property
-    var modifiedTree = searchTreeAndModifyIsCollpased(this.state.tree,name)
+    var modifiedTree = searchTreeAndModifyIsCollpased(this.state.tree, name)
     //set state to new tree
     this.setState({
       tree: modifiedTree
@@ -24,7 +24,7 @@ var Folder = React.createClass({
       <div>
         <h1> File Structure </h1>
         <ul>
-        <Item collapse={this.collapse} tree={this.state.tree} />
+        <Item path={this.state.tree.name} collapse={this.collapse} tree={this.state.tree} />
         </ul>
       </div>
     )

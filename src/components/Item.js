@@ -4,29 +4,26 @@ var React = require('react');
 //so we can pass "path" as the param to collapse function
 var Item = React.createClass({
   render: function(){
+    var referencePath =[];
+    referencePath = referencePath.concat(this.props.path);
     if(this.props.tree.children){
       //need to make a reference to "this" context bc of new function scope in map
       var self = this;
       
       var listItems = this.props.tree.children.map(function(node){
-        var path = self.props.path || [];
-        debugger;
-        console.log(node.name)
-        //pathSoFar.push(node.name)
-        path.push(node.name)
+        var myPath = [];
+        referencePath = referencePath.concat(node.name);
+        myPath = myPath.concat(referencePath.slice());
+        referencePath.pop();
         return <Item
-                path = {path}
+                path = {myPath}
                 collapse={self.props.collapse}
                 isCollapsed={node.isCollapsed} 
                 tree={node} 
                 name={node.name}/>
+        
       })
-      //pathSoFar.pop()
     }
-    // if(pathSoFar.length === ){
-    //   path.push(pathSoFar.slice())
-    // }
-      
     //bind collapse func b/c we need collapse bound to the react component 
     
     return(
