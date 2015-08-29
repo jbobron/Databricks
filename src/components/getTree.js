@@ -16,8 +16,8 @@ module.exports = {
     myTree.addChild("Projects");
     myTree.addChild("Frameworks");
     myTree.addChild("Contacts");
-    myTree.children[0].addChild('project1');
-    myTree.children[0].addChild('project2');
+    myTree.children[0].addChild('React');
+    myTree.children[0].addChild('Backbone');
     myTree.children[1].addChild('React');
     myTree.children[1].addChild('Backbone');
     myTree.children[1].addChild('Angular');

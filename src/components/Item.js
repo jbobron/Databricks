@@ -28,7 +28,7 @@ var Item = React.createClass({
     
     return(
       <div>
-        <li path={this.props.path} onClick={this.props.collapse.bind(this, this.props.tree.name)}>{this.props.tree.name}</li>
+        <li path={this.props.path} onClick={this.props.collapse.bind(this, this.props.path)}>{this.props.tree.name}</li>
         <ul style={this.props.tree.isCollapsed ? {display: 'none'} : {}}>
           {listItems}
         </ul>

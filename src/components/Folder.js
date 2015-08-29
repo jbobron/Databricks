@@ -10,10 +10,10 @@ var Folder = React.createClass({
   },
   //collapse is passed down to each item in list, must be located here 
   //to access tree state
-  collapse: function(name){
-    console.log("name", name, "collapse flag toggled")
+  collapse: function(path){
+    console.log("path", path)
     //modify target node's isCollapsed property
-    var modifiedTree = searchTreeAndModifyIsCollpased(this.state.tree, name)
+    var modifiedTree = searchTreeAndModifyIsCollpased(this.state.tree, path)
     //set state to new tree
     this.setState({
       tree: modifiedTree
@@ -31,7 +31,29 @@ var Folder = React.createClass({
   }
 });
 
-function searchTreeAndModifyIsCollpased(tree, target){
+function searchTreeAndModifyIsCollpased(tree, path){
+  //figure out which index is associated with next item in path
+  function subroutine(node, count){
+    debugger;
+    for(var i = 0; i < node.children.length; i++){
+      if(node.children[i].name === path[count]){
+        if(count === path.length-1){
+          node.children[i].isCollapsed = !node.children[i].isCollapsed;
+          return;
+        }
+        count = count +1;
+        subroutine(node.children[i], count)
+      }
+    } 
+  }
+  subroutine(tree, 1)
+  return tree;
+
+}
+
+
+
+function searchTreeAndModifyIsCollpased_OLD(tree, target){
   function subroutine(node){
     if(node.name === target){
       node.isCollapsed = !node.isCollapsed;
