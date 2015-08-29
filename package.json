@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "Databricks Coding Challenge",
   "author": "Jake Obron <jbobron@gmail.com>",
+  "scripts": {
+    "test": "mocha --compilers js:babel/register --recursive"
+  },
   "bin": {
     "module-name": "./bin/module-name"
   },
@@ -13,7 +16,13 @@
   },
   "keywords": [],
   "dependencies": {
-    "react": "^0.13.3"
+    "babel": "^5.8.23",
+    "io.js": "0.0.0",
+    "jsdom": "^2.0.0",
+    "mocha": "^2.2.5",
+    "react": "^0.13.3",
+    "react-addons": "^0.9.1-deprecated",
+    "react-tools": "^0.13.3"
   },
   "devDependencies": {
     "browserify": "^10.1.3",
