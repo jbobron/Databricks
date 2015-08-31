@@ -14,7 +14,10 @@ var Item = React.createClass({
         referencePath = referencePath.concat(node.name);
         myPath = myPath.concat(referencePath.slice());
         referencePath.pop();
+        //added key as a attribute to get rid of error, path should be replaced throughout
+        //component with key
         return <Item
+                key={myPath}
                 path={myPath}
                 collapse={self.props.collapse}
                 isCollapsed={node.isCollapsed}
@@ -25,7 +28,7 @@ var Item = React.createClass({
     //bind collapse func b/c we need collapse bound to the react component 
     return(
       <div>
-        <li path={this.props.path} onClick={this.props.collapse.bind(this, this.props.path)}>{this.props.tree.name}</li>
+        <li path={this.props.path} onClick={this.props.collapse.bind(null, this.props.path)}>{this.props.tree.name}</li>
         <ul style={this.props.tree.isCollapsed ? {display: 'none'} : {}}>
           {listItems}
         </ul>
