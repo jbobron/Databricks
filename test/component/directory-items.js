@@ -71,9 +71,6 @@ describe(' Four Node Tree Item checks', function(){
     }
   });
 
-
-
-
 })
 
 

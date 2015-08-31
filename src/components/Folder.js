@@ -8,7 +8,7 @@ var Folder = React.createClass({
       tree: getTree()
     }
   },
-  //collapse is passed down to each item in list, must be located here 
+  //collapse is passed down to each item in list, must be located here
   //to access tree state
   collapse: function(path){
     //modify target node's isCollapsed property
@@ -44,7 +44,7 @@ function searchTreeAndModifyIsCollpased(tree, path){
           node.children[i].isCollapsed = !node.children[i].isCollapsed;
           return;
         }
-        count = count +1;
+        count = count + 1;
         subroutine(node.children[i], count)
       }
     } 
