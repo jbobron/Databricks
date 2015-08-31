@@ -8,7 +8,12 @@
 
 THANKS!!
 
+###Testing:
+1. run `npm test`
+
 
 NOTE TO FUTURE DEVELOPERS:
 -only make edits to components in src, do not make edits to anything is dist
 -make sure you are opening index file in dist folder
+
+

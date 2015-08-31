@@ -16,7 +16,7 @@ var Item = React.createClass({
         myPath = myPath.concat(referencePath.slice());
         referencePath.pop();
         return <Item
-                path = {myPath}
+                path={myPath}
                 collapse={self.props.collapse}
                 isCollapsed={node.isCollapsed} 
                 tree={node} 
